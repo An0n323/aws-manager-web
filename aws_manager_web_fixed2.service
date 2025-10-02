@@ -1,0 +1,15 @@
+[Unit]
+Description=AWS Manager Web Fixed2 (Flask)
+After=network.target
+
+[Service]
+User=ec2-user
+WorkingDirectory=/home/ec2-user
+ExecStart=/bin/bash -c 'source /home/ec2-user/aws_creds.env && /usr/bin/python3 /home/ec2-user/aws_manager_web_fixed2.py'
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
